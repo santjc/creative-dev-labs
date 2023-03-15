@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 900px;
+}
+.logo {
+  display: flex;
+  padding: 0px 16px;
+  background-color: #f2faff;
+  border: 2px solid #cccccc;
+  border-radius: 8px;
+  margin: 0 auto 32px 0;
+  svg {
+    width: 140px;
+    height: 100%;
+  }
+}
+
+.welcome {
+  padding: 20px;
+  background-color: #f2faff;
+  border-radius: 8px;
+  border: 2px solid #cccccc;
+}
+
+.experiments {
+  display: flex;
+  flex-direction: column;
+  margin: 32px 0;
+  background-color: #f2faff;
+  border-radius: 8px;
+
+  border: 2px solid #cccccc;
+}
+
+.experiment {
+  padding: 12px 20px;
+  display: flex;
+  justify-content: flex-start;
+
+  .experimentTitle {
+    margin-left: 12px;
+  }
+}
+
+.experiment:not(:last-child) {
+  border-bottom: 2px solid #cccccc;
+}
+
+.experimentIcon {
+  fill: black;
+  margin: auto 0;
+}

@@ -1,0 +1,11 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 48px 24px;
+  background-color: linear-gradient(
+    135deg,
+    rgb(238, 238, 238) 0%,
+    rgb(169, 184, 195) 100%
+  );
+}

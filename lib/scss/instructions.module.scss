@@ -1,0 +1,21 @@
+.instructions {
+  position: absolute;
+  top: 75px;
+  left: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  background-color: white;
+  justify-content: start;
+  max-width: 400px;
+
+  h1 {
+    font-size: 1.5em;
+  }
+  p {
+    font-weight: 300;
+    font-size: 14px;
+  }
+}
