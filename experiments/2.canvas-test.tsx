@@ -17,3 +17,5 @@ export default function Experiment() {
     </Canvas>
   );
 }
+
+Experiment.Title = 'Just a Canvas Test'

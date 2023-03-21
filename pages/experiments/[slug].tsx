@@ -1,11 +1,11 @@
 import { getAllExperimentSlugs } from '@app/lib/utils';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 import { ParsedUrlQuery } from 'querystring';
 import { Suspense, useEffect, useState } from 'react';
 
 import Fallback from '@components/Fallback';
-import Layout from '@components/Layout';
 
 import styles from '@styles/Experiment.module.scss';
 
@@ -20,23 +20,24 @@ export default function Experiment({
   slug,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [Component, setComponent] = useState<Module<Component>>();
+  const [slugNumber, setSlugNumber] = useState('');
   useEffect(() => {
     import(`/experiments/${slug}`).then((Comp) => {
-      setComponent(Comp.default);
+      setComponent(Comp && <Comp.default />);
     });
+    setSlugNumber(slug[0]);
   }, [slug]);
 
   return (
-    <Layout>
-      <>
-        <Link className={styles.goBack} href={'/'}>
-          Home
-        </Link>
-        <Suspense fallback={<Fallback />}>
-          {Component as React.ReactNode}
-        </Suspense>
-      </>
-    </Layout>
+    <Suspense fallback={<Fallback />}>
+      <Head>
+        <title>SantiLab | Experiment #{slugNumber}</title>
+      </Head>
+      <Link className={styles.goBack} href={'/'}>
+        Home
+      </Link>
+      {Component as React.ReactNode}
+    </Suspense>
   );
 }
 export const getStaticPaths: GetStaticPaths = async () => {

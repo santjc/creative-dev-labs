@@ -39,7 +39,10 @@ body {
   padding: 0;
   font-family: 'Metropolis', sans-serif;
   color: black;
-  background-color: white;
+  background-color: black;
+}
+canvas {
+  background-color: #fff;
 }
 
 a,
@@ -71,7 +74,7 @@ input,
 textarea,
 select,
 iframe {
-  color: inherit;
+  color: white;
   margin: 0;
   padding: 0;
   text-decoration: none;

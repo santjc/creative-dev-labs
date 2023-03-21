@@ -1,6 +1,5 @@
 import { getAllExperimentSlugs } from '@app/lib/utils';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import Image from 'next/image';
 
 import HyperLink from '@components/Icons/HyperLink';
 import Layout from '@components/Layout';
@@ -14,33 +13,31 @@ export default function Home({
     <Layout>
       <div className={styles.container}>
         <figure className={styles.logo}>
-          <Image
-            src="https://avatars.githubusercontent.com/u/43038138?v=4"
-            alt="My Avatar"
-            width={100}
-            height={50}
-          />
+          <h1>SC</h1>
         </figure>
         <figure className={styles.welcome}>
           <p className={styles.welcomeText}>
-            👋  Hi there.<br></br>
-            You are on my lab, here I learn creating animations, 3D Visuals, and anything related to creative development.
-
+            👋 Hi there.<br></br>
+            You are on my lab, here I learn creating animations, 3D Visuals, and
+            anything related to creative development.
           </p>
         </figure>
-        <figure className={styles.experiments}>
-          {experiments.map((exp: any) => {
-            return (
-              <a
-                href={exp.href}
-                key={exp.filename}
-                className={styles.experiment}
-              >
-                <HyperLink className={styles.experimentIcon} />
-                <p className={styles.experimentTitle}>{exp.title}</p>
-              </a>
-            );
-          })}
+        <figure className={styles.experimentsContainer}>
+          <h1>Experiments</h1>
+          <figure className={styles.experiments}>
+            {experiments.map((exp: any) => {
+              return (
+                <a
+                  href={exp.href}
+                  key={exp.filename}
+                  className={styles.experiment}
+                >
+                  <HyperLink className={styles.experimentIcon} />
+                  <p className={styles.experimentTitle}>{exp.title}</p>
+                </a>
+              );
+            })}
+          </figure>
         </figure>
       </div>
     </Layout>
@@ -56,7 +53,8 @@ export const getStaticProps: GetStaticProps = async () => {
   );
   let experiments = modules
     .map((exp) => {
-      const title: string = exp[0].replace(/^\d+\./, '').replace(/\.tsx$/, '');
+      const title: string =
+        exp[1].Title || exp[0].replace(/^\d+\./, '').replace(/\.tsx$/, '');
 
       return {
         filename: exp[0],

@@ -9,41 +9,38 @@ import {
 } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
 import gsap, { Power2 } from 'gsap';
-import React, { Suspense, useLayoutEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 
-import Fallback from '@components/Fallback';
-
 export default function Experiment() {
   return (
-    <Suspense fallback={<Fallback />}>
-      <Canvas
-        camera={{ position: [0, 0, 200], fov: 90 }}
-        style={{ width: '100vw', height: '100vh' }}
-      >
-        <ambientLight intensity={0.5} />
-        <OrbitControls enableZoom={false} enableRotate={false} />
-        <Environment preset={'city'} background blur={0.8} />
-        <ScrollControls pages={2}>
-          <Model />
-          <Html fullscreen>
-            <div className={styles.instructions}>
-              <p>Scroll to read the label</p>
-            </div>
+    <Canvas
+      camera={{ position: [0, 0, 200], fov: 90 }}
+      style={{ width: '100vw', height: '100vh' }}
+    >
+      <OrbitControls enableZoom={false} enableRotate={false} />
+      <Environment preset={'dawn'} />
+      <ScrollControls pages={2}>
+        <Model />
+        <Html fullscreen>
+          <div className={styles.instructions}>
+            <p>Scroll to read the label</p>
+          </div>
 
-            <div
-              style={{ transform: 'translateY(280vh)' }}
-              className={styles.instructions}
-            >
-              <p>Move mouse to left or right to rotate</p>
-            </div>
-          </Html>
-        </ScrollControls>
-      </Canvas>
-    </Suspense>
+          <div
+            style={{ transform: 'translateY(280vh)' }}
+            className={styles.instructions}
+          >
+            <p>Move mouse to left or right to rotate</p>
+          </div>
+        </Html>
+      </ScrollControls>
+    </Canvas>
   );
 }
+
+Experiment.Title = 'Rotate 3D Can on Scroll';
 
 type GLTFResult = GLTF & {
   nodes: {

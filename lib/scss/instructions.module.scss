@@ -8,14 +8,16 @@
   border: 1px solid #cccccc;
   border-radius: 8px;
   background-color: white;
-  justify-content: start;
+  justify-content: flex-start;
   max-width: 400px;
 
   h1 {
     font-size: 1.5em;
+    color: black;
   }
   p {
     font-weight: 300;
     font-size: 14px;
+    color: black;
   }
 }

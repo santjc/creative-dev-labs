@@ -6,49 +6,85 @@
 }
 .logo {
   display: flex;
-  padding: 0px 16px;
+  padding: 0;
+  justify-content: center;
   background-color: #f2faff;
-  border: 2px solid #cccccc;
   border-radius: 8px;
   margin: 0 auto 32px 0;
-  svg {
-    width: 140px;
-    height: 100%;
+  padding: 8px;
+
+  h1 {
+    color: black;
   }
 }
 
 .welcome {
   padding: 20px;
-  background-color: #f2faff;
+  background-color: black;
+  color: #f2faff;
   border-radius: 8px;
-  border: 2px solid #cccccc;
+  border: 1px solid #8f8f8f;
 }
-
+.experimentsContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0;
+  h1 {
+    color: white;
+    padding: 0;
+    margin: 16px 0;
+    font-size: 1.5em;
+  }
+}
 .experiments {
   display: flex;
   flex-direction: column;
-  margin: 32px 0;
-  background-color: #f2faff;
+  margin: 0px 0;
+  background-color: black;
   border-radius: 8px;
-
-  border: 2px solid #cccccc;
+  border: 1px solid #8f8f8f;
 }
 
 .experiment {
   padding: 12px 20px;
   display: flex;
+  transition: 0.2s;
   justify-content: flex-start;
 
   .experimentTitle {
+    color: white;
     margin-left: 12px;
   }
 }
 
 .experiment:not(:last-child) {
-  border-bottom: 2px solid #cccccc;
+  border-bottom: 1px solid #8f8f8f;
+}
+
+.experiment:hover {
+  background-color: #008ad8;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  .experimentIcon {
+    fill: #fff;
+  }
+}
+.experiment:hover:first-child {
+  border-radius: 0px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.experiment:hover:last-child {
+  border-radius: 0px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.experiment:hover:not(:first-child):not(:last-child) {
+  border-radius: 0px;
 }
 
 .experimentIcon {
-  fill: black;
+  fill: white;
   margin: auto 0;
 }

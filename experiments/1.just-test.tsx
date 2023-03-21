@@ -22,3 +22,4 @@ export default function Test() {
     </div>
   );
 }
+Test.Title = 'Just a HTML Test'
