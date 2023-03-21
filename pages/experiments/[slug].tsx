@@ -1,11 +1,11 @@
 import { getAllExperimentSlugs } from '@app/lib/utils';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 import { ParsedUrlQuery } from 'querystring';
 import { Suspense, useEffect, useState } from 'react';
 
 import Fallback from '@components/Fallback';
+import Layout from '@components/Layout';
 
 import styles from '@styles/Experiment.module.scss';
 
@@ -18,26 +18,24 @@ type Component = {
 };
 export default function Experiment({
   slug,
+  slugNumber,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [Component, setComponent] = useState<Module<Component>>();
-  const [slugNumber, setSlugNumber] = useState('');
   useEffect(() => {
     import(`/experiments/${slug}`).then((Comp) => {
       setComponent(Comp && <Comp.default />);
     });
-    setSlugNumber(slug[0]);
   }, [slug]);
 
   return (
-    <Suspense fallback={<Fallback />}>
-      <Head>
-        <title>SantiLab | Experiment #{slugNumber}</title>
-      </Head>
-      <Link className={styles.goBack} href={'/'}>
-        Home
-      </Link>
-      {Component as React.ReactNode}
-    </Suspense>
+    <Layout title={`SantiLab | Experiment #${slugNumber}`} padding={false}>
+      <Suspense fallback={<Fallback />}>
+        <Link className={styles.goBack} href={'/'}>
+          Home
+        </Link>
+        {Component as React.ReactNode}
+      </Suspense>
+    </Layout>
   );
 }
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -58,9 +56,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = ({ params }) => {
+  const slugNumber = params?.slug?.toString().split('.')[0] || '-';
   return {
     props: {
       slug: (params as ParsedUrlQuery).slug,
+      slugNumber,
     },
   };
 };
