@@ -4,7 +4,8 @@ Welcome to My Creative Development Lab! This is the place where I showcase my cr
 
 ## Tech Stack
 
-I use two libraries for my creations: Three.js (R3F - React Three Fiber) and GSAP. Both of these libraries are really powerful tools, but I am still learning, so feel free to watch my progress here.
+I use two libraries for my creations: [Three.js](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) (R3F - React Three Fiber) and [GSAP](https://greensock.com/gsap/). Both of these libraries are really powerful tools, but I am still learning, so feel free to watch my progress here.
+For physics I am using Cannon.js [@react/use-cannon](https://github.com/pmndrs/use-cannon)
 
 ## Website
 
