@@ -46,6 +46,13 @@ export default function Home({
 
 export const getStaticProps: GetStaticProps = async () => {
   const allSlugs = await getAllExperimentSlugs();
+  if (!allSlugs) {
+    return {
+      props: {
+        experiments: [],
+      },
+    };
+  }
   const modules = await Promise.all(
     allSlugs.map((slug) =>
       import(`/experiments/${slug}`).then((m) => [slug, m.default])

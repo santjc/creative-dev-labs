@@ -138,7 +138,7 @@ function Model(props: JSX.IntrinsicElements['group']) {
     <>
       <Html fullscreen position={[0, 0, 200]}>
         <div ref={htmlRef} className={styles.container}>
-          <h1>Welcome to Kelsus Labs</h1>
+          <h1>Welcome to the Labs</h1>
           <h3>Scroll down!</h3>
         </div>
       </Html>
