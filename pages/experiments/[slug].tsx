@@ -38,10 +38,10 @@ export default function Experiment({
     </Layout>
   );
 }
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths = async () => {
   const allSlugs = await getAllExperimentSlugs();
 
-  const paths = allSlugs.map((exp) => {
+  const paths = allSlugs?.map((exp) => {
     return {
       params: {
         slug: exp,
