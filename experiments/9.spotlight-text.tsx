@@ -14,17 +14,14 @@ Experiment.Title = 'Shader: Text Spotlight';
 
 const TextComponent = () => {
   const { raycaster, mouse, camera, scene, viewport } = useThree();
-  let _uTime = 0;
   const shaderMaterial = new ShaderMaterial({
     uniforms: {
-      uTime: { value: 0 },
       mousePosition: { value: { x: 0, y: 0 } },
       textColor: { value: new Color(0x2b8cff) },
     },
     vertexShader: `
       varying vec2 vUv;
       varying vec3 vPosition;
-      uniform float uTime;
       uniform vec2 mousePosition;
       void main() {
         vUv = uv;
@@ -59,10 +56,6 @@ const TextComponent = () => {
     const intersects = raycaster.intersectObject(scene, true);
     if (intersects.length > 0) {
       if (intersects[0].object.name === 'shaderTextComponent') {
-        if (_uTime < 1) {
-          _uTime += 0.0025;
-          shaderMaterial.uniforms.uTime.value = _uTime;
-        }
         shaderMaterial.uniforms.mousePosition.value = intersects[0].uv;
       }
     }
