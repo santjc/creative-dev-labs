@@ -56,7 +56,7 @@ type GLTFResult = GLTF & {
 function Model(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF(
     '/models/can_soup-transformed.glb'
-  ) as GLTFResult;
+  ) as unknown as GLTFResult;
 
   const tl = useRef<any>();
   const modelRef = useRef<THREE.Group>(null!);

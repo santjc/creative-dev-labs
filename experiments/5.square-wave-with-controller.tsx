@@ -24,8 +24,8 @@ export default function Experiment() {
     >
       <OrbitControls enabled={true} />
       <Environment preset={'city'} />
-      <pointLight position={[0, 0, 0]} intensity={1.5} color={'#ff0000'}/>
-      <pointLight position={[0, -40, 40]} intensity={0.7} color={'#fff'}/>
+      <pointLight position={[0, 0, 0]} intensity={1.5} color={'#ff0000'} />
+      <pointLight position={[0, -40, 40]} intensity={0.7} color={'#fff'} />
 
       <ScrollControls pages={0}>
         <Model frequency={frequency} size={size} />
@@ -78,7 +78,7 @@ type ModelProps = {
 function Model({ size = 1, frequency = 1 }: ModelProps) {
   const { nodes, materials } = useGLTF(
     '/models/cubes-transformed.glb'
-  ) as GLTFResult;
+  ) as unknown as GLTFResult;
 
   const parentRef = useRef<THREE.Group>(null);
   const groupRefs = useRef<Array<THREE.Mesh | null>>([]);

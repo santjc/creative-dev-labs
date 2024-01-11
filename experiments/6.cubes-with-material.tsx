@@ -81,7 +81,7 @@ type GLTFResult = GLTF & {
 export function Model(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF(
     '/models/chained-cubes-02-transformed.glb'
-  ) as GLTFResult;
+  ) as unknown as GLTFResult;
   const parentRef = useRef<Group>(null!);
   const groupRefs = useRef<Array<Mesh | Group | null>>([]);
   const connectionRefs = useRef<Array<Mesh | Group | null>>([]);

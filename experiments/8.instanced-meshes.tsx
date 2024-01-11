@@ -82,7 +82,7 @@ type CoinProps = {
 function Coins({ playAnimation = false }: { playAnimation?: boolean }) {
   const { nodes, materials } = useGLTF(
     '/models/coin-processed.glb'
-  ) as GLTFResult;
+  ) as unknown as GLTFResult;
 
   const createCoinInstances = useMemo(() => {
     const coinsPositions = [
@@ -169,7 +169,7 @@ type GLTFResultSmartphone = GLTF & {
 function Model() {
   const { nodes, materials } = useGLTF(
     '/models/smartphone-processed.glb'
-  ) as GLTFResultSmartphone;
+  ) as unknown as GLTFResultSmartphone;
   const modelRef = useRef<THREE.Group>(null!);
 
   const [planeRef] = usePlane<Mesh>(() => ({

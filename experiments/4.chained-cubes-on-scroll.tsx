@@ -22,8 +22,8 @@ export default function Experiment() {
       style={{ width: '100vw', height: '100vh', backgroundColor: '#fff' }}
     >
       <Environment preset="forest" />
-      <pointLight position={[10, 10, 10]} color={'red'}/>
-      <pointLight position={[-10, 0, 30]} intensity={0.5} color={'white'}/>
+      <pointLight position={[10, 10, 10]} color={'red'} />
+      <pointLight position={[-10, 0, 30]} intensity={0.5} color={'white'} />
       <ScrollControls pages={2}>
         <group>
           <Model />
@@ -54,7 +54,7 @@ type GLTFResult = GLTF & {
 function Model(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF(
     '/models/chained-cubes-transformed.glb'
-  ) as GLTFResult;
+  ) as unknown as GLTFResult;
   const groupRefs = useRef<Array<Group>>([]);
   const parentRef = useRef<Group>(null);
   const htmlRef = useRef<HTMLDivElement>(null);
